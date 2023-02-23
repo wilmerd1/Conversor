@@ -6,33 +6,36 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Clases.Divisas;
+import Clases.Divisa;
+import Clases.DivisasList;
+import Clases.Operaciones;
 
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
+
 import java.awt.Font;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class Interfaz extends JFrame {
-	public JTextField txtNumero;
-	public JTextField txtResultado;
-
+	 public JComboBox<String> comboBox1 = new JComboBox<>();
+	 public JComboBox<String> comboBox2 = new JComboBox<>();
 	/**
 	 * Launch the application.
 	 */
 	static double pesoCol = 4896.18;
 	
-	private JTextField txtPeso;
-	
 	public static void main(String[] args) {
-		Divisas divisas = new Divisas();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -48,6 +51,17 @@ public class Interfaz extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	public void invertirSeleccion() {
+	    int index1 = comboBox1.getSelectedIndex();
+	    int index2 = comboBox2.getSelectedIndex();
+	    int temp = index1;
+	    index1 = index2;
+	    index2 = temp;
+	    comboBox1.setSelectedIndex(index1);
+	    comboBox2.setSelectedIndex(index2);
+	}
+	
 	public Interfaz() {
 		setFont(new Font("Roboto", Font.BOLD, 12));
 		setResizable(false);
@@ -60,44 +74,72 @@ public class Interfaz extends JFrame {
 		desktopPane.setBounds(0, 0, 434, 261);
 		getContentPane().add(desktopPane);
 		desktopPane.setLayout(null);
+        comboBox1.setModel(new DefaultComboBoxModel<String>(new String[] {"USD", "EUR","Peso COL"}));
+        comboBox2.setModel(new DefaultComboBoxModel<String>(new String[] {"USD", "EUR","Peso COL"}));
+        comboBox1.setSelectedIndex(-1);
+        comboBox2.setSelectedIndex(-1);
 		
-		txtNumero = new JTextField();
-		txtNumero.setBounds(124, 37, 143, 33);
-		desktopPane.add(txtNumero);
-		txtNumero.setColumns(10);
 		
-		JButton btnConvertir = new JButton("Convertir");
-		btnConvertir.addActionListener(new ActionListener() {
-			//Empieza la accion del Botón
+		// Crear el ComboBox
+       
+        comboBox1.setBounds(103, 62, 201, 22);
+		desktopPane.add(comboBox1);
+		
+		
+		comboBox2.setBounds(103, 138, 201, 22);
+		desktopPane.add(comboBox2);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double numero = Double.parseDouble(txtNumero.getText());
-				double re = numero * pesoCol;
-				String d = String.valueOf(re);
-				txtResultado.setText(d);
-				//txtResultado.setText(d);;
+				
+				invertirSeleccion();
+			}
+		});
+		btnNewButton.setBounds(41, 198, 89, 23);
+		desktopPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Operaciones.Operacion();
 				
 			}
 		});
-		btnConvertir.setBounds(272, 137, 152, 23);
-		desktopPane.add(btnConvertir);
+		btnNewButton_1.setBounds(215, 198, 89, 23);
+		desktopPane.add(btnNewButton_1);
 		
-		txtResultado = new JTextField();
-		txtResultado.setColumns(10);
-		txtResultado.setBounds(124, 203, 143, 33);
-		desktopPane.add(txtResultado);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(10, 46, 104, 14);
-		desktopPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Resultado");
-		lblNewLabel_1.setBounds(10, 212, 104, 14);
-		desktopPane.add(lblNewLabel_1);
-		
-		txtPeso = new JTextField();
-		txtPeso.setText("peso");
-		txtPeso.setColumns(10);
-		txtPeso.setBounds(281, 37, 143, 33);
-		desktopPane.add(txtPeso);
-	}
+        // Obtener los datos de 
+        DivisasList datos = new DivisasList();
+
+        // Llenar el ComboBox con los datos
+      //  for (Divisa dato : datos.getListaDatos()) {
+          //  comboBox1.addItem(dato.getMoneda());
+        //}
+       
+     // Llenar el ComboBox con los datos
+     //   for (Divisa dato : datos.getListaDatos()) {
+         //   comboBox2.addItem(dato.getMoneda());
+       // }
+        
+        
+        }
+	public JComboBox<String> getComboBox1() {
+        return comboBox1;
+    }
+    
+    public JComboBox<String> getComboBox2() {
+        return comboBox2;
+}
+    
+    
+    public JComboBox<String> setComboBox1() {
+        return comboBox1;
+    }
+    
+    public JComboBox<String> setComboBox2() {
+        return comboBox2;
+}
 }
