@@ -19,7 +19,7 @@ public class DivisasList {
         listaDatos.add(dato2);
 
         Divisa dato3 = new Divisa();
-        dato3.setMoneda("Peso COL");
+        dato3.setMoneda("COP");
         listaDatos.add(dato3);
     }
 
