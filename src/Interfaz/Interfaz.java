@@ -17,15 +17,17 @@ import java.util.Map;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class Interfaz extends JFrame {
 	JComboBox<String> comboBox1 = new JComboBox<>();
 	JComboBox<String> comboBox2 = new JComboBox<>();
+	JTextField textField = new JTextField();
 	/**
 	 * Launch the application.
 	 */
 	static double pesoCol = 4896.18;
-
+	
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -62,37 +64,42 @@ public class Interfaz extends JFrame {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 
-		JDesktopPane desktopPane = new JDesktopPane();
+		final JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBounds(0, 0, 434, 261);
 		getContentPane().add(desktopPane);
 		desktopPane.setLayout(null);
 
-		// comboBox1.setModel(new DefaultComboBoxModel<String>(new String[] { "USD",
-		// "EUR", "Peso COL" }));
-		// comboBox2.setModel(new DefaultComboBoxModel<String>(new String[] { "USD",
-		// "EUR", "Peso COL" }));
-
 		// Crear el ComboBox
-
-		comboBox1.setBounds(103, 62, 201, 22);
+		comboBox1.setBounds(212, 11, 201, 22);
 		desktopPane.add(comboBox1);
-
-		comboBox2.setBounds(103, 138, 201, 22);
+		comboBox2.setBounds(212, 67, 201, 22);
 		desktopPane.add(comboBox2);
 
-		JButton btnNewButton = new JButton("New button");
+				
+				textField.setBounds(37, 185, 376, 46);
+				desktopPane.add(textField);
+				textField.setColumns(10);
+
+		//
+		
+
+		JButton btnNewButton = new JButton("Alternar Monedas");
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				invertirSeleccion();
 			}
 		});
-		btnNewButton.setBounds(41, 198, 89, 23);
-		desktopPane.add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton.setBounds(37, 111, 136, 23);
+		desktopPane.add(btnNewButton);
+		JButton btnNewButton_1 = new JButton("Operaciones");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				
+
 
 				/*
 				 * String moneda1 = (String) comboBox1.getSelectedItem().toString();
@@ -102,13 +109,17 @@ public class Interfaz extends JFrame {
 				 * System.out.println("  ");
 				 */
 				OperacionDivisas();
+
+				
 				// Operaciones.Operacion();
 			}
 
 		});
-		btnNewButton_1.setBounds(215, 198, 89, 23);
-		desktopPane.add(btnNewButton_1);
 
+		btnNewButton_1.setBounds(224, 111, 167, 23);
+		desktopPane.add(btnNewButton_1);
+		
+		
 		// Obtener los datos de
 		DivisasList datos = new DivisasList();
 
@@ -123,6 +134,8 @@ public class Interfaz extends JFrame {
 		}
 
 	}
+
+	
 
 	protected void OperacionDivisas() {
 
@@ -147,10 +160,14 @@ public class Interfaz extends JFrame {
 		String resultado = opciones.get(clave);
 
 		if (resultado == null) {
-
+			
+			//textField.add;
+			
 			System.out.println("Cambie de Divisa no pueden ser las mismas");
 
 		} else {
+			
+			
 
 			System.out.println("Solución: " + resultado);
 		}
@@ -181,5 +198,4 @@ public class Interfaz extends JFrame {
 	public JComboBox<String> getComboBox2() {
 		return comboBox2;
 	}
-
 }
