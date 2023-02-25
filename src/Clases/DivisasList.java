@@ -10,17 +10,17 @@ public class DivisasList {
         listaDatos = new ArrayList<>();
 
         // Agregar algunos datos a la lista
-        Divisa dato1 = new Divisa();
-        dato1.setMoneda("USD");
-        listaDatos.add(dato1);
+        Divisa moneda1 = new Divisa();
+        moneda1.setMoneda("USD");
+        listaDatos.add(moneda1);
 
-        Divisa dato2 = new Divisa();
-        dato2.setMoneda("EUR");
-        listaDatos.add(dato2);
+        Divisa moneda2 = new Divisa();
+        moneda2.setMoneda("EUR");
+        listaDatos.add(moneda2);
 
-        Divisa dato3 = new Divisa();
-        dato3.setMoneda("COP");
-        listaDatos.add(dato3);
+        Divisa moneda3 = new Divisa();
+        moneda3.setMoneda("COP");
+        listaDatos.add(moneda3);
     }
 
     public List<Divisa> getListaDatos() {
