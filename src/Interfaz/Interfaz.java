@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JDesktopPane;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.event.ActionEvent;
@@ -164,75 +163,62 @@ public class Interfaz extends JFrame {
 	// lectura en el codigo
 	protected void OperacionDivisas() {
 
-		String valorTexto = txtMoneda.getText();
+		if (txtMoneda.getText().length() > 0 || txtMoneda.getText().contains("A")) {
 
-		double valorDoble = Double.parseDouble(valorTexto);
+			String valorTexto = txtMoneda.getText();
+			double valorDoble = Double.parseDouble(valorTexto);
+			String divisa1 = (String) getCbDivisa1().getSelectedItem();
+			String divisa2 = (String) getCbDivisa2().getSelectedItem();
+			String separador = divisa1 + " - " + divisa2;
+			System.out.println("Combo1 " + divisa1);
+			System.out.println("Combo2 " + divisa2);
+			System.out.println(" ");
 
+			Map<String, String> opciones = new HashMap<>();
+			opciones.put("USD - EUR", "USD a EUR");
+			opciones.put("USD - COP", "USD a COP");
+			opciones.put("EUR - USD", "EUR a USD");
+			opciones.put("EUR - COP", "EUR a COP");
+			opciones.put("COP - USD", "COP a USD");
+			opciones.put("COP - EUR", "COP a EUR");
 
-		String divisa1 = (String) getCbDivisa1().getSelectedItem();
-		String divisa2 = (String) getCbDivisa2().getSelectedItem();
+			String resultado = opciones.get(separador);
 
-		String separador = divisa1 + " - " + divisa2;
-		System.out.println("Combo1 " + divisa1);
-		System.out.println("Combo2 " + divisa2);
-		System.out.println(" ");
+			if (resultado == null) {
+				txtResultado.setText("Cambie de Divisa no pueden ser las mismas");
+				System.out.println("Cambie de Divisa no pueden ser las mismas");
 
-		Map<String, String> opciones = new HashMap<>();
-		opciones.put("USD - EUR", "USD a EUR");
-		opciones.put("USD - COP", "USD a COP");
-		opciones.put("EUR - USD", "EUR a USD");
-		opciones.put("EUR - COP", "EUR a COP");
-		opciones.put("COP - USD", "COP a USD");
-		opciones.put("COP - EUR", "COP a EUR");
+			} else if (resultado == "USD a EUR") {
+				double operacon = valorDoble * 0.95;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Dólar Estadounidense son " + solucion + " Euro");
+			} else if (resultado == "USD a COP") {
+				double operacon = valorDoble * 4841.58;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Dólar Estadounidense son " + solucion + " Peso Colombiano");
+			} else if (resultado == "EUR a USD") {
+				double operacon = valorDoble * 1.05;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Euro son " + solucion + " Dólar Estadounidense");
+			} else if (resultado == "EUR a COP") {
+				double operacon = valorDoble * 5105.49;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Euro son " + solucion + " Peso Colombiano");
+			} else if (resultado == "COP a USD") {
+				double operacon = valorDoble * 0.00021;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Peso Colombiano son " + solucion + " Dólar Estadounidense");
+			} else if (resultado == "COP a EUR") {
+				double operacon = valorDoble * 0.00019;
+				String solucion = Double.valueOf(operacon).toString();
+				txtResultado.setText(valorTexto + " Peso Colombiano son " + solucion + " Euro");
+			}
 
-		String resultado = opciones.get(separador);
+		} else {
 
-		if (resultado == null) {
-			txtResultado.setText("Cambie de Divisa no pueden ser las mismas");
-			System.out.println("Cambie de Divisa no pueden ser las mismas");
-
-		} else if (resultado == "USD a EUR") {
-			double operacon = valorDoble * 0.95;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Dólar Estadounidense son " + solucion+ " Euro");
-		}else if (resultado == "USD a COP") {
-			double operacon = valorDoble *4841.58;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Dólar Estadounidense son " + solucion+ " Peso Colombiano");
-		}else if (resultado == "EUR a USD") {
-			double operacon = valorDoble * 1.05;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Euro son " + solucion+ " Dólar Estadounidense");
-		}else if (resultado == "EUR a COP") {
-			double operacon = valorDoble * 5105.49;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Euro son " + solucion+ " Peso Colombiano");
-		}else if (resultado == "COP a USD") {
-			double operacon = valorDoble * 0.00021;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Peso Colombiano son " +solucion+ " Dólar Estadounidense");
-		}else if (resultado == "COP a EUR") {
-			double operacon = valorDoble * 0.00019;
-			String solucion = Double.valueOf(operacon).toString();
-			txtResultado.setText(valorTexto + " Peso Colombiano son " + solucion+ " Euro");
+			System.out.println("ingrese un valor");
 		}
 
-		/*
-		 * if (resultado == null) {
-		 * 
-		 * txtResultado.setText("Cambie de Divisa no pueden ser las mismas"); // Imprime
-		 * resultado en un TextField
-		 * 
-		 * System.out.println("Cambie de Divisa no pueden ser las mismas");
-		 * 
-		 * } else {
-		 * 
-		 * txtResultado.setText("Solución: " + resultado); // Imprime resultado en un
-		 * TextField
-		 * 
-		 * System.out.println("Solución: " + resultado);
-		 * }
-		 */
 	};
 
 }
