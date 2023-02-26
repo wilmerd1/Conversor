@@ -30,8 +30,8 @@ public class Interfaz extends JFrame {
 	JTextField txtMoneda = new JTextField();
 	JButton btnIntercambiarMonedas = new JButton("Alternar");
 	JButton btnOperaciones = new JButton("Calcular");
-	JLabel lblDuno = new JLabel("Dolar");
-	JLabel lblDdos = new JLabel("Dolar");
+	JLabel lblDuno = new JLabel("Dolar USA");
+	JLabel lblDdos = new JLabel("Dolar USA");
 
 	/**
 	 * Launch the application.
