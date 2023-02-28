@@ -19,6 +19,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JSpinner;
 
 public class Interfaz extends JFrame {
 
@@ -73,10 +74,12 @@ public class Interfaz extends JFrame {
 		// Ubicación del ComboBox
 		cbDivisa1.setToolTipText("Seleciona la divisa principal \r\n");
 		cbDivisa2.setToolTipText("Seleciona la divisa a convertir \r\n");
+		datosComboBox(); // rellena el comboBox con el metodo
+		
 		txtResultado.setEditable(false); // Evitamos que pueda editar la casilla del Resultado
 		txtResultado.setColumns(10);
 		txtResultado.setColumns(10);
-		datosComboBox(); // rellena el comboBox con el metodo
+		
 
 		// Iconos
 		ImageIcon iconCambioDivisa = new ImageIcon("src/imagenes/cambios_divisa.png");
@@ -99,58 +102,58 @@ public class Interfaz extends JFrame {
 		lblDuno.setFont(new Font("Roboto", Font.BOLD, 13));
 		lblDdos.setIcon(iconDolar);
 		lblDdos.setFont(new Font("Roboto", Font.BOLD, 13));
+		
+		JSpinner spinner = new JSpinner();
+		
 
 		// Layout y ubicación de Objetos
 		GroupLayout gl_desktopPane = new GroupLayout(desktopPane);
 		gl_desktopPane.setHorizontalGroup(
-				gl_desktopPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_desktopPane.createSequentialGroup()
-								.addGap(19)
-								.addComponent(lblDuno, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(cbDivisa1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-								.addGap(28)
-								.addComponent(txtMoneda, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_desktopPane.createSequentialGroup()
-								.addGap(19)
-								.addComponent(lblDdos, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(cbDivisa2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-								.addGap(28)
-								.addComponent(txtResultado, GroupLayout.PREFERRED_SIZE, 252,
-										GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_desktopPane.createSequentialGroup()
-								.addGap(125)
-								.addComponent(btnIntercambiarMonedas, GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-								.addGap(91)
-								.addComponent(btnOperaciones, GroupLayout.PREFERRED_SIZE, 136,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(85)));
+			gl_desktopPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_desktopPane.createSequentialGroup()
+					.addGap(19)
+					.addComponent(lblDuno, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(cbDivisa1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+					.addGap(28)
+					.addComponent(txtMoneda, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(spinner, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_desktopPane.createSequentialGroup()
+					.addGap(19)
+					.addComponent(lblDdos, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(cbDivisa2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+					.addGap(28)
+					.addComponent(txtResultado, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_desktopPane.createSequentialGroup()
+					.addGap(125)
+					.addComponent(btnIntercambiarMonedas, GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+					.addGap(91)
+					.addComponent(btnOperaciones, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+					.addGap(85))
+		);
 		gl_desktopPane.setVerticalGroup(
-				gl_desktopPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_desktopPane.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gl_desktopPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(txtMoneda, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDuno, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(cbDivisa1, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(11)
-								.addGroup(gl_desktopPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(txtResultado, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDdos, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(cbDivisa2, GroupLayout.PREFERRED_SIZE, 30,
-												GroupLayout.PREFERRED_SIZE))
-								.addGap(38)
-								.addGroup(gl_desktopPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnIntercambiarMonedas, GroupLayout.PREFERRED_SIZE, 40,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnOperaciones, GroupLayout.PREFERRED_SIZE, 40,
-												GroupLayout.PREFERRED_SIZE))));
+			gl_desktopPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_desktopPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_desktopPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblDuno, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cbDivisa1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_desktopPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(txtMoneda, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+							.addComponent(spinner, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
+					.addGap(11)
+					.addGroup(gl_desktopPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(txtResultado, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDdos, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cbDivisa2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addGap(38)
+					.addGroup(gl_desktopPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnIntercambiarMonedas, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnOperaciones, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+		);
 		gl_desktopPane.setHonorsVisibility(false);
 		desktopPane.setLayout(gl_desktopPane);
 
