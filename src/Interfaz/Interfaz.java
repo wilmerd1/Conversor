@@ -262,7 +262,7 @@ public class Interfaz extends JFrame {
 		index2 = temp;
 		cbDivisa1.setSelectedIndex(index1);
 		cbDivisa2.setSelectedIndex(index2);
-	}
+	}	 
 
 	// Invertir resultados en los JtextField
 	public void invertirResultado() {
