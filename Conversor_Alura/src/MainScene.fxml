@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="654.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainSceneController">
+   <children>
+      <AnchorPane layoutX="1.0" layoutY="15.0" prefHeight="79.0" prefWidth="441.0" style="-fx-background-color: #1a2d4c;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane prefHeight="90.0" prefWidth="447.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="141.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="187.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="8.0" prefHeight="18.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#getOnDivisasButtonClicked" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@imagenes/icon_exchange.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#getOnTemperaturaButtonClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@imagenes/icon_temperature.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnExit" fitHeight="45.0" fitWidth="45.0" onMouseClicked="#getOnExitButtonClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@imagenes/icon_exit.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="40.0" text="Divisas" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="74.0" text="Temperatura" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="27.0" text="Salir" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #1a2d4c;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+         <children>
+            <TextField fx:id="txtMoneda" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
+            <TextField fx:id="txtResultado" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <ComboBox fx:id="cbDivisa1" layoutX="218.0" layoutY="82.0" onAction="#comboBox1setOnAction" prefHeight="42.0" prefWidth="201.0" promptText="Seleccione una opción" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="82.0" />
+            <ComboBox fx:id="cbDivisa2" layoutX="218.0" layoutY="164.0" onAction="#comboBox2setOnAction" prefHeight="40.0" prefWidth="201.0" promptText="Seleccione una opción" />
+            <Label layoutX="4.0" layoutY="4.0" prefHeight="42.0" prefWidth="170.0" text="CONVERSOR DIVISAS" textFill="WHITE" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="464.0" AnchorPane.topAnchor="4.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="50.0" layoutY="249.0" opacity="0.5" prefWidth="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0" />
+            <Button fx:id="calcularButton" layoutX="404.0" layoutY="274.0" mnemonicParsing="false" onAction="#calcularButtonsetOnAction" prefHeight="42.0" prefWidth="170.0" text="Convertir" AnchorPane.rightAnchor="80.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/calcular.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="invertButton" layoutX="80.0" layoutY="274.0" mnemonicParsing="false" onAction="#alternarButtonsetOnAction" prefHeight="40.0" prefWidth="170.0" text="Alternar" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/cambios_divisa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="219.0" layoutY="23.0" opacity="0.5" prefHeight="5.0" prefWidth="416.0" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="219.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="From:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="439.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="Monto:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="To:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="440.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="Resultado:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDuno" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="83.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="lblDdos" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="164.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="58.0" prefHeight="17.0" prefWidth="170.0" text="Nombre Divisas:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="temperaturaPanel" layoutX="10.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #122e1b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+         <children>
+            <TextField fx:id="txtTempValor" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
+            <TextField fx:id="txtTempResultado" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="cbTempUno" layoutX="218.0" layoutY="82.0" onAction="#comboBoxTemp1setOnAction" prefHeight="42.0" prefWidth="201.0" promptText="Seleccione una opción" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="82.0" />
+            <ComboBox fx:id="cbTempDos" layoutX="218.0" layoutY="164.0" onAction="#comboBoxTemp2setOnAction" prefHeight="40.0" prefWidth="201.0" promptText="Seleccione una opción" />
+            <Label layoutX="4.0" layoutY="4.0" prefHeight="42.0" prefWidth="201.0" text="CONVERSOR TEMPERATURAS" textFill="WHITE" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="4.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="50.0" layoutY="249.0" opacity="0.5" prefWidth="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0" />
+            <Button fx:id="ConvertirTempButton" layoutX="404.0" layoutY="274.0" mnemonicParsing="false" onAction="#convertirTempButtonsetOnAction" prefHeight="42.0" prefWidth="170.0" text="Convertir" AnchorPane.rightAnchor="80.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/calcular.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="invertirTemperaturaButton" layoutX="80.0" layoutY="274.0" mnemonicParsing="false" onAction="#alternarTempButtonsetOnAction" prefHeight="40.0" prefWidth="170.0" text="Alternar" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/cambios_divisa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="219.0" layoutY="23.0" opacity="0.5" prefHeight="5.0" prefWidth="393.0" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="219.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="From:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="439.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="Valor:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="To:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="440.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="Resultado:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTempUno" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="83.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTempDos" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="164.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="58.0" prefHeight="17.0" prefWidth="170.0" text="Cero Absoluto:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="arrowDivisas" fitHeight="25.0" fitWidth="25.0" layoutX="64.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="67.0">
+         <image>
+            <Image url="@imagenes/icon_triangle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowTemperatura" fitHeight="25.0" fitWidth="25.0" layoutX="227.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="239.0">
+         <image>
+            <Image url="@imagenes/icon_triangle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowExit" disable="true" fitHeight="25.0" fitWidth="25.0" layoutX="359.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@imagenes/icon_triangle.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
